@@ -3,6 +3,10 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
 
 function Entete(props) {
+    // Calculer le nombre d'article dans le panier
+    const [panier, setPanier] = props.etatPanier;
+    const valeursPanier = Object.values(panier);
+
     return(
         <header className="Entete">
             <div className="logo">Magasin</div>
@@ -14,7 +18,7 @@ function Entete(props) {
 
             <ul className="navUtilisateur">
                 <li>
-                    <Badge badgeContent={0} color="secondary">
+                    <Badge badgeContent={valeursPanier.reduce((valInit, valCourante) => valInit + valCourante.qte, 0)} color="secondary">
                         <ShoppingCartIcon />
                     </Badge>
                 </li>

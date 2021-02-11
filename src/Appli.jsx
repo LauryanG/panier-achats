@@ -10,16 +10,16 @@ function Appli() {
   // UseState va créer une variable d'état initialisée a {}
   const etatPanier = useState({});
 
-  const panier = etatPanier[0];
-  const setPanier = etatPanier[1];
+  // const panier = etatPanier[0];
+  // const setPanier = etatPanier[1];
 
-  const [connexion, setConnexion] = useState(false); // Destructuring arrays
+  //const [connexion, setConnexion] = useState(false); Destructuring arrays
 
   return (
     <div className="Appli">
-      <Entete />
+      <Entete etatPanier={etatPanier}/>
       <section className="contenuPrincipal">
-        <ListeProduits />
+        <ListeProduits etatPanier={etatPanier}/>
       </section>
 
       <PiedDePage/>
