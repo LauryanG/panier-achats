@@ -1,41 +1,33 @@
 import './Appli.scss';
-import {useEffect, useState} from 'react';
-import Entete from './Entete';
+import useLocalStorageState from './hooks/useLocalStorageState';
+import Entete from './Entete.jsx';
 import ListeProduits from './ListeProduits';
+import Accueil from './Accueil';
+import Apropos from './Apropos';
+import Contact from './Contact';
 import PiedDePage from './PiedDePage';
+import { Switch,Route } from 'react-router-dom';
 
-function Appli() {
-  // Gérer l'état avec les "React Hooks"
-  // UseState va créer une variable d'état initialisée a {}
-  const etatPanier = useState(() => {
-    return JSON.parse(window.localStorage.getItem('panier')) || {};
-  //   let panierDansLS = window.localStorage.getItem('panier');
-  //   if (panierDansLS !== null) {
-  //     return JSON.parse(panierDansLS);
-  //   }
-  //   else {
-  //     return {};
-  //   }
-  });
-
-  const [panier, setPanier] = etatPanier;
-
-  // Corriger avec useEffect()
-  // Sauvegarder l'état du panier dans localStorage
-
-  useEffect(
-    () => window.localStorage.setItem('panier', JSON.stringify(etatPanier[0])), 
-    [etatPanier[0]]);
-
+export default function Appli() { 
+  const etatPanier = useLocalStorageState({}, "panier");
   return (
     <div className="Appli">
-      <Entete etatPanier={etatPanier}/>
+      <Entete etatPanier={etatPanier} />
       <section className="contenuPrincipal">
-        <ListeProduits etatPanier={etatPanier}/>
+        
+        <Switch>
+          <Route path="/" component={Accueil} exact/>
+          <Route path="/nos-produits">
+            <ListeProduits etatPanier={etatPanier} exact />
+          </Route>
+          <Route path="/a-propos-de-nous" exact>
+            <Apropos />
+          </Route>
+          <Route path="/contactez-nous" component={Contact} exact />
+        </Switch>
+        
       </section>
-      <PiedDePage/>
+      <PiedDePage />
     </div>
   );
 }
-
-export default Appli;
