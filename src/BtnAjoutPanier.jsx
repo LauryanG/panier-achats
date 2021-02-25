@@ -1,14 +1,10 @@
 import { Badge } from '@material-ui/core';
-import { useState } from 'react';
 import './BtnAjoutPanier.scss';
 
-export default function BtnAjoutPanier(props) {
-    const [texte, setTexte] = useState("Ajouter au panier");
-    const [qte, setQte] = useState(0);
+export default function BtnAjoutPanier({onClick, qte, texte}) {
     return(
-        
         <Badge badgeContent={qte} color="primary">
-            <button onClick={function() {props.onClick(); setTexte('Augmenter'); setQte(qte+1)}} className="BtnAjoutPanier">
+            <button onClick={onClick} className="BtnAjoutPanier">
                 {texte}
             </button>
         </Badge>
