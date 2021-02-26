@@ -5,14 +5,13 @@ import fbAppli from 'firebase/app';
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBAB1bpsWFNArALnECEKBRvNvkucnWE3eA",
-  authDomain: "panier-achats-react.firebaseapp.com",
-  databaseURL: "https://panier-achats-react-default-rtdb.firebaseio.com",
-  projectId: "panier-achats-react",
-  storageBucket: "panier-achats-react.appspot.com",
-  messagingSenderId: "1061179620791",
-  appId: "1:1061179620791:web:fe5c649b209e5a2a3d7c32",
-  measurementId: "G-020DCXGPX2"
+  apiKey: "AIzaSyDYXixKoQkDQRBQM6g_v0lspnYwWsUV2OM",
+  authDomain: "veille-technologique-173fb.firebaseapp.com",
+  projectId: "veille-technologique-173fb",
+  storageBucket: "veille-technologique-173fb.appspot.com",
+  messagingSenderId: "884338243671",
+  appId: "1:884338243671:web:a5b8adf2d90fea7ba98b12",
+  measurementId: "G-19TYS3Z8K8"
 };
 
 export default function ListeProduits(props) {
